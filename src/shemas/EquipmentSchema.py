@@ -4,4 +4,4 @@ class EquipmentSchema(BaseModel):
     name: str
     description: str
     type: str
-    ship_system: str | int
+    ship_system: str

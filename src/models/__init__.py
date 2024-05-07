@@ -1,6 +1,5 @@
 from .db import Base
-from .Ship import Ship
-from .ShipSystem import ShipSystem
+from .ShipSystem import ShipSystem, Ship, ShipAndSystem
 from .SecurityIndicator import SecurityIndicator
 from .Equipment import Equipment
 from .Vulnerability import Vulnerability

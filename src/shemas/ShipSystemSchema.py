@@ -1,8 +1,14 @@
-from typing import Union
 from pydantic import BaseModel
+
+class ShipSchema(BaseModel):
+    name: str
+    description: str
 
 class ShipSystemSchema(BaseModel):
     name: str
     description: str
     type: str
-    ship: str | int
+
+class ShipAndSystemSchema(BaseModel):
+    ship: str
+    ship_system: str

@@ -3,4 +3,4 @@ from pydantic import BaseModel
 class ProtectionSchema(BaseModel):
     name: str
     description: str
-    equipment: str | int
+    equipment: str
