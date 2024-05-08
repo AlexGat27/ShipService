@@ -1,10 +1,12 @@
 from .CreateModelsController import CreateModelsController
+from .SelectShipController import SelectShipController
 from src.shemas import *
 
 class UserFormController():
 
     def __init__(self) -> None:
-        self.controller = CreateModelsController()
+        self.createController = CreateModelsController()
+        self.selectController = SelectShipController()
 
     def startMenu(self):
         while True:
@@ -17,7 +19,8 @@ class UserFormController():
             print("6. Добавить меру защиты")
             print("7. Добавить показатель защищенности")
             print("8. Добавить угрозу")
-            print("9. Выйти из программы")
+            print("9. Вывести характеристики корабля")
+            print("10. Выйти из программы")
 
             choice = input("Ваш выбор: ")
 
@@ -38,6 +41,8 @@ class UserFormController():
             elif choice == "8":
                 self.dangerForm()
             elif choice == "9":
+                self.infoShipAll()
+            elif choice == "10":
                 print("Выход из программы.")
                 break
             else:
@@ -48,7 +53,7 @@ class UserFormController():
             name = input("Введите наименование корабля: "),
             description = input("Введите описание корабля: ")
         )
-        self.controller.create_ship(new_model)
+        self.createController.create_ship(new_model)
         print("Успешно добавлен корабль")
 
     def shipSystemForm(self):
@@ -57,7 +62,7 @@ class UserFormController():
             description = input("Введите описание системы корабля: "),
             type = input("Введите тип системы корабля: ")
         )
-        self.controller.create_ship_system(new_model)
+        self.createController.create_ship_system(new_model)
         print("Успешно добавлена система корабля")
 
     def shipSystemAssociationForm(self):
@@ -65,7 +70,7 @@ class UserFormController():
             ship = input("Введите наименование корабля: "),
             ship_system = input("Введите наименование системы: ")
         )
-        if self.controller.create_ship_system_association(new_model):
+        if self.createController.create_ship_system_association(new_model):
             print("Успешно добавлена ассоциация корабля и системы")
         else: print("Не найден корабль или система")
 
@@ -76,7 +81,7 @@ class UserFormController():
             type = input("Введите тип оборудования корабля: "),
             ship_system = input("Введите наименование системы корабля: ")
         )
-        if self.controller.create_equipment(new_model):
+        if self.createController.create_equipment(new_model):
             print("Успешно добавлено оборудование")
         else: print("Не найдена система")
 
@@ -86,7 +91,7 @@ class UserFormController():
             description = input("Введите описание уязвимости: "),
             equipment = input("Введите наименование оборудования: ")
         )
-        if self.controller.create_vulnerability(new_model):
+        if self.createController.create_vulnerability(new_model):
             print("Успешно добавлена уязвимость")
         else: print("Не найдено оборудование")
 
@@ -96,7 +101,7 @@ class UserFormController():
             description = input("Введите описание меры защиты: "),
             equipment = input("Введите наименование или id оборудования: ")
         )
-        if self.controller.create_protection(new_model):
+        if self.createController.create_protection(new_model):
             print("Успешно добавлена мера защиты")
         else: print("Не найдено оборудование")
 
@@ -106,7 +111,7 @@ class UserFormController():
             description = input("Введите описание показателей защищенности: "),
             ship_system = input("Введите наименование системы корабля или id: ")
         )
-        if self.controller.create_security_indicator(new_model): 
+        if self.createController.create_security_indicator(new_model): 
             print("Успешно добавлен показатель защищенности")
         else: print("Не найдена система")
 
@@ -114,8 +119,12 @@ class UserFormController():
         new_model = DangerSchema(
             name = input("Введите наименование угрозы: "),
             description = input("Введите описание угрозы: "),
-            ship_system = input("Введите наименование системы корабля или id (опционально): ")
+            ship_system = input("Введите наименование системы корабля (опционально): ")
         )
-        if self.controller.create_danger(new_model):
+        if self.createController.create_danger(new_model):
             print("Успешно добавлена угроза")
         else: print("Не найдена система")
+
+    def infoShipAll(self):
+        ship_name = input("Введите наименование корабля: ")
+        self.selectController.displayShipModel(ship_name)
