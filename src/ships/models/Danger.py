@@ -6,7 +6,7 @@ class Danger(Base):
     __tablename__ = "dangers"
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
+    title = Column(String, nullable=False)
     description = Column(String, nullable=False)
 
     danger_for_system = relationship("Danger4System", back_populates='danger', uselist=False)

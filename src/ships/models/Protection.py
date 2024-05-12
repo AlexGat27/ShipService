@@ -6,7 +6,7 @@ class Protection(Base):
     __tablename__ = "protections"
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
+    title = Column(String, nullable=False)
     description = Column(String, nullable=False)
     equipment_id = Column(Integer, ForeignKey("equipments.id"))
 

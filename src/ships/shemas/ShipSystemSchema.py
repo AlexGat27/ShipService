@@ -1,11 +1,11 @@
 from pydantic import BaseModel
 
 class ShipSchema(BaseModel):
-    name: str
+    title: str
     description: str
 
 class ShipSystemSchema(BaseModel):
-    name: str
+    title: str
     description: str
     type: str
 

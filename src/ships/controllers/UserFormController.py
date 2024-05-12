@@ -1,6 +1,6 @@
 from .CreateModelsController import CreateModelsController
 from .SelectShipController import SelectShipController
-from src.shemas import *
+from ..shemas import *
 
 class UserFormController():
 
@@ -18,9 +18,10 @@ class UserFormController():
             print("5. Добавить уязвимость")
             print("6. Добавить меру защиты")
             print("7. Добавить показатель защищенности")
-            print("8. Добавить угрозу")
-            print("9. Вывести характеристики корабля")
-            print("10. Выйти из программы")
+            print("8. Добавить ассоциацию показателя защищенности и системы")
+            print("9. Добавить угрозу")
+            print("10. Вывести характеристики корабля")
+            print("11. Выйти из программы")
 
             choice = input("Ваш выбор: ")
 
@@ -39,10 +40,12 @@ class UserFormController():
             elif choice == "7":
                 self.securityIndicatorForm()
             elif choice == "8":
-                self.dangerForm()
+                self.securityIndicatorForm()
             elif choice == "9":
-                self.infoShipAll()
+                self.dangerForm()
             elif choice == "10":
+                self.infoShipAll()
+            elif choice == "11":
                 print("Выход из программы.")
                 break
             else:
@@ -109,11 +112,19 @@ class UserFormController():
         new_model = SecurityIndicatorSchema(
             name = input("Введите наименование показателей защищенности: "),
             description = input("Введите описание показателей защищенности: "),
-            ship_system = input("Введите наименование системы корабля или id: ")
         )
         if self.createController.create_security_indicator(new_model): 
             print("Успешно добавлен показатель защищенности")
         else: print("Не найдена система")
+
+    def systemIndicatorAssociationForm(self):
+        new_model = ShipAndSystemSchema(
+            ship_system = input("Введите наименование системы: "),
+            security_indicator = input("Введите показатель защищенности: "),
+        )
+        if self.createController.create_system_indicator_association(new_model):
+            print("Успешно добавлена ассоциация показателя защищенности и системы")
+        else: print("Не найден показатель защищенности или система")
 
     def dangerForm(self):
         new_model = DangerSchema(

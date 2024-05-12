@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
 class ProtectionSchema(BaseModel):
-    name: str
+    title: str
     description: str
     equipment: str

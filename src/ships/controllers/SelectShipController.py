@@ -1,6 +1,6 @@
-from src.models.db import Session
-from src.shemas import *
-from src.models import *
+from ..models.db import Session
+from ..shemas import *
+from ..models import *
 
 class SelectShipController:
     def __init__(self):

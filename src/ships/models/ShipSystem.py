@@ -6,7 +6,7 @@ class Ship(Base):
     __tablename__ = "ships"
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
+    title = Column(String, nullable=False)
     description = Column(String, nullable=False)
 
     ship_system = relationship("ShipAndSystem", back_populates="ship")
@@ -15,12 +15,12 @@ class ShipSystem(Base):
     __tablename__ = "ship_systems"
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
+    title = Column(String, nullable=False)
     description = Column(String, nullable=False)
     type = Column(String, nullable=False)
 
     ship = relationship("ShipAndSystem", back_populates="ship_system")
-    security_indicator = relationship("SecurityIndicator", back_populates="ship_system")
+    security_indicator = relationship("SystemAndIndicator", back_populates="ship_system")
     equipment = relationship("Equipment", back_populates="ship_system")
     danger_for_system = relationship("Danger4System", back_populates="ship_system")
 
