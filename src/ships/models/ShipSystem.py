@@ -18,6 +18,8 @@ class ShipSystem(Base):
     title = Column(String, nullable=False)
     description = Column(String, nullable=False)
     type = Column(String, nullable=False)
+    category = Column(Integer, nullable=False)
+    document = Column(String, nullable=False)
 
     ship = relationship("ShipAndSystem", back_populates="ship_system")
     security_indicator = relationship("SystemAndIndicator", back_populates="ship_system")

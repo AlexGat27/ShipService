@@ -60,11 +60,11 @@ async def create_ship_system_association(data: ShipAndSystemSchema):
 @router.post("/security-sys-association")
 async def create_system_indicator_association(data: SystemAndIndicatorSchema):
     if await create_controller.create_system_indicator_association(data):
-        return {"model1": data.ship, "model2": data.ship_system}
+        return {"model1": data.security_indicator, "model2": data.ship_system}
     else: raise HTTPException(409, detail="Неудачная запись в базу данных")
 
 @router.post("/system-equipment-association")
 async def create_system_equipment_association(data: SystemAndEquipmentSchema):
     if await create_controller.create_system_equipment_association(data):
-        return {"model1": data.ship, "model2": data.ship_system}
+        return {"model1": data.equipment, "model2": data.ship_system}
     else: raise HTTPException(409, detail="Неудачная запись в базу данных")
