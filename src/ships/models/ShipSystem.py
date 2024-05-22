@@ -21,7 +21,7 @@ class ShipSystem(Base):
 
     ship = relationship("ShipAndSystem", back_populates="ship_system")
     security_indicator = relationship("SystemAndIndicator", back_populates="ship_system")
-    equipment = relationship("Equipment", back_populates="ship_system")
+    equipment = relationship("SystemAndEquipment", back_populates="ship_system")
     danger_for_system = relationship("Danger4System", back_populates="ship_system")
 
 class ShipAndSystem(Base):
