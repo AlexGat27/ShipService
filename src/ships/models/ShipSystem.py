@@ -30,8 +30,8 @@ class ShipAndSystem(Base):
     __tablename__ = "ship_and_systems"
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
-    ship_id = Column(Integer, ForeignKey("ships.id"))
-    ship_system_id = Column(Integer, ForeignKey("ship_systems.id"))
+    ship_id = Column(Integer, ForeignKey("ships.id", ondelete='CASCADE'))
+    ship_system_id = Column(Integer, ForeignKey("ship_systems.id", ondelete='CASCADE'))
 
     ship = relationship("Ship", back_populates="ship_system")
     ship_system = relationship("ShipSystem", back_populates="ship")

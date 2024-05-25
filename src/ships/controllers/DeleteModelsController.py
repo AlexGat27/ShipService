@@ -8,7 +8,6 @@ class DeleteModelsController():
         self.session = Session()
 
     async def delete_model(self, id: int, tablename: str):
-        print(id, tablename)
         for table in Base.metadata.tables.values():
             if table.name == tablename:
                 delete_query = table.delete().where(table.c.id == id)

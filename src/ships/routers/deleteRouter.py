@@ -21,3 +21,4 @@ async def delete_model(id: int, tablename: str):
         raise HTTPException(400, detail="Ошибка при удалении, проверьте, нет ли зависимых ключей")
     else: 
         raise HTTPException(400, detail="Неизвестная ошибка при удалении")
+        
