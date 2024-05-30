@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
 class DangerSchema(BaseModel):
-    name: str
+    title: str
     description: str
     ship_system: str | None
